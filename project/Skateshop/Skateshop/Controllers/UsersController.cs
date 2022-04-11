@@ -1,28 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Skateshop.Data;
 using Skateshop.Models;
+using Skateshop.Services;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Skateshop.Controllers
 {
     public class UsersController : Controller
     {
         private readonly SkateshopContext _context;
+        private readonly IAuthService _authService;
 
-        public UsersController(SkateshopContext context)
+        public UsersController(SkateshopContext context, IAuthService authService)
         {
             _context = context;
+            _authService = authService;
         }
 
         // GET: Register
         [HttpGet("Register")]
         public IActionResult Register()
         {
+            if (_authService.IsAuthorized(HttpContext))
+            {
+                return NotFound();
+            }
             return View();
         }
 
@@ -30,17 +35,18 @@ namespace Skateshop.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register([Bind("Id,Username,Password")] User user)
         {
-            if (_context.User.Any(u => u.Username.Equals(user.Username)))
+            if (ModelState.IsValid && !_context.User.Any(u => u.Username.Equals(user.Username)))
             {
-                ViewBag.Error = $"The username \"{user.Username}\" already exists.";
-            }
-            else if (ModelState.IsValid)
-            {
-                _context.Add(user);
+                _context.Add(new User {
+                    Username = user.Username,
+                    Password = Cipher.Encrypt(user.Password)
+                });
                 await _context.SaveChangesAsync();
-                // SET AUTH COOKIE
+
+                _authService.Login(HttpContext, user);
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Error = $"The username \"{user.Username}\" already exists.";
             return View(user);
         }
 
@@ -48,20 +54,42 @@ namespace Skateshop.Controllers
         [HttpGet("Login")]
         public IActionResult Login()
         {
+            if (_authService.IsAuthorized(HttpContext))
+            {
+                return NotFound();
+            }
             return View();
         }
 
         // POST: Login
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([Bind("Id,Username,Password")] User user)
+        public IActionResult Login([Bind("Id,Username,Password")] User user)
         {
-            var password = await _context.User.FirstOrDefaultAsync(u => u.Username.Equals(user.Username));
-            if (ModelState.IsValid && user.Password.Equals(password))
+            if (ModelState.IsValid && _authService.Login(HttpContext, user))
             {
-                // SET AUTH COOKIE
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.Error = "Wrong username or password";
             return View(user);
+        }
+
+        // GET: Logout
+        [HttpGet("Logout")]
+        public IActionResult Logout()
+        {
+            if (_authService.IsAuthorized(HttpContext))
+            {
+                return View(nameof(Logout));
+            }
+            return NotFound();
+        }
+
+        // Post: Logout
+        [HttpPost("Logout")]
+        public IActionResult ConfirmLogout()
+        {
+            _authService.Logout(HttpContext);
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Users

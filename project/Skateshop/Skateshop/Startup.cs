@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Skateshop.Data;
+using Skateshop.Services;
 
 namespace Skateshop
 {
@@ -29,6 +30,8 @@ namespace Skateshop
 
             services.AddDbContext<SkateshopContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SkateshopContext")));
+
+            services.AddTransient<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

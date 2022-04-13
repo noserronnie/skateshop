@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Skateshop.Data;
 
 namespace Skateshop.Migrations
 {
     [DbContext(typeof(SkateshopContext))]
-    partial class SkateshopContextModelSnapshot : ModelSnapshot
+    [Migration("20220412094716_AddedTrucksProduct")]
+    partial class AddedTrucksProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

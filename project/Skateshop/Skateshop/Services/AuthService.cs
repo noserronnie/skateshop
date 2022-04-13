@@ -24,6 +24,15 @@ namespace Skateshop.Services
             return _context.User.Any(u => u.Username.Equals(username) && u.Password.Equals(password));
         }
 
+        public bool IsAdmin(HttpContext httpContext)
+        {
+            if (IsAuthorized(httpContext))
+            {
+                return httpContext.Request.Cookies["username"].Equals("admin");
+            }
+            return false;
+        }
+
         public bool Login(HttpContext httpContext, User user)
         {
             try

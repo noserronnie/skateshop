@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Skateshop.Data;
 
 namespace Skateshop.Migrations
 {
     [DbContext(typeof(SkateshopContext))]
-    partial class SkateshopContextModelSnapshot : ModelSnapshot
+    [Migration("20220412070451_AddedDeckProduct")]
+    partial class AddedDeckProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,14 +30,8 @@ namespace Skateshop.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<float>("Length")
                         .HasColumnType("real");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Nose")
                         .HasColumnType("real");
@@ -55,42 +51,6 @@ namespace Skateshop.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeckProduct");
-                });
-
-            modelBuilder.Entity("Skateshop.Models.TrucksProduct", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AxleWidth")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("HangerWidth")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Height")
-                        .HasColumnType("real");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Weight")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TrucksProduct");
                 });
 
             modelBuilder.Entity("Skateshop.Models.User", b =>

@@ -1,5 +1,3 @@
-using System;
-
 namespace Skateshop.Models
 {
     public class ErrorViewModel

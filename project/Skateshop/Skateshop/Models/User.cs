@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Skateshop.Models
 {
@@ -12,6 +13,8 @@ namespace Skateshop.Models
 
         [Required]
         public string Password { get; set; }
+
+        public ShoppingCart ShoppingCart { get; set; }
 
     }
 }

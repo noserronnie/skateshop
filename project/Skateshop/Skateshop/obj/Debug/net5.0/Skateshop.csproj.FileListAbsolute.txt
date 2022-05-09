@@ -439,3 +439,9 @@ C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\n
 C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Skateshop.csproj.AssemblyReference.cache
 C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Products\DeckDetails.cshtml.g.cs
 C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Products\TrucksDetails.cshtml.g.cs
+C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Products\Admin.cshtml.g.cs
+C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Brands\Create.cshtml.g.cs
+C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Brands\Delete.cshtml.g.cs
+C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Brands\Details.cshtml.g.cs
+C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Brands\Edit.cshtml.g.cs
+C:\Users\ronni\Desktop\TBZ\326\skateshop\project\Skateshop\Skateshop\obj\Debug\net5.0\Razor\Views\Brands\Index.cshtml.g.cs

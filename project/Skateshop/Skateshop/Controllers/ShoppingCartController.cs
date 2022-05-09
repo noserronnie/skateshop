@@ -22,6 +22,11 @@ namespace Skateshop.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (!_authService.IsAuthorized(HttpContext))
+            {
+                return NotFound();
+            }
+
             var user = await _context.User
                 .Include(u => u.ShoppingCart.DeckProducts)
                 .Include(u => u.ShoppingCart.TrucksProducts)

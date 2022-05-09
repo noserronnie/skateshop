@@ -1,4 +1,5 @@
 ﻿using Skateshop.Composite;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Skateshop.Models
@@ -19,6 +20,8 @@ namespace Skateshop.Models
         public float Nose { get; set; }
 
         public float Tail { get; set; }
+
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
     }
 }

@@ -36,16 +36,21 @@ namespace Skateshop.Controllers
         {
             if (ModelState.IsValid && !_context.User.Any(u => u.Username.Equals(user.Username)))
             {
+                var shoppingCart = new ShoppingCart();
+
+                _context.ShoppingCart.Add(shoppingCart);
                 _context.Add(new User
                 {
                     Username = user.Username,
-                    Password = Cipher.Encrypt(user.Password)
+                    Password = Cipher.Encrypt(user.Password),
+                    ShoppingCart = shoppingCart
                 });
                 await _context.SaveChangesAsync();
 
                 _authService.Login(HttpContext, user);
                 return RedirectToAction("Index", "Home");
             }
+
             ViewBag.Error = $"The username \"{user.Username}\" already exists.";
             return View(user);
         }

@@ -52,7 +52,7 @@
             </dl>
             @if (authService.IsAuthorized(Context))
             {
-                <a href="#" class="btn btn-primary">Add to Shopping Cart</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="ShoppingCart" asp-action="AddTrucksProduct" asp-route-id="@Model.Id">Add to Shopping Cart</a>
             }
             else
             {

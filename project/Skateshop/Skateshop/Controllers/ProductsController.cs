@@ -24,14 +24,17 @@ namespace Skateshop.Controllers
             var products = new List<Product>();
 
             var deckProducts = await _context.DeckProduct.ToListAsync();
-            products.AddRange(deckProducts);
             var trucksProducts = await _context.TrucksProduct.ToListAsync();
+            var wheelsProducts = await _context.WheelsProduct.ToListAsync();
+            var griptapeProducts = await _context.GriptapeProduct.ToListAsync();
+            products.AddRange(deckProducts);
             products.AddRange(trucksProducts);
+            products.AddRange(wheelsProducts);
+            products.AddRange(griptapeProducts);
 
             return View(products);
         }
 
-        // GET: DeckProducts/Details/5
         public async Task<IActionResult> DeckDetails(long? id)
         {
             if (id == null)
@@ -41,14 +44,13 @@ namespace Skateshop.Controllers
 
             var product = await _context.DeckProduct
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null && !(product is DeckProduct))
+            if (product == null)
             {
                 return NotFound();
             }
             return View(product);
         }
 
-        // GET: DeckProducts/Details/5
         public async Task<IActionResult> TrucksDetails(long? id)
         {
             if (id == null)
@@ -58,7 +60,39 @@ namespace Skateshop.Controllers
 
             var product = await _context.DeckProduct
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null && !(product is DeckProduct))
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        public async Task<IActionResult> WheelsDetails(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.WheelsProduct
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        public async Task<IActionResult> GriptapeDetails(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.GriptapeProduct
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
             {
                 return NotFound();
             }

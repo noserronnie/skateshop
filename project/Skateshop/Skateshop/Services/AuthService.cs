@@ -85,5 +85,16 @@ namespace Skateshop.Services
             return "Error";
         }
 
+        public long GetUserId(HttpContext httpContext)
+        {
+            var username = string.Empty;
+            if (httpContext.Request.Cookies.TryGetValue("username", out username))
+            {
+                var id = _context.User.Where(u => u.Username.Equals(username)).First().Id;
+                return id;
+            }
+            return -1;
+        }
+
     }
 }

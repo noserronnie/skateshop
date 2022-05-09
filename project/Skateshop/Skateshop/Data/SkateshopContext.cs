@@ -14,8 +14,14 @@ namespace Skateshop.Data
 
         public DbSet<DeckProduct> DeckProduct { get; set; }
 
-        public DbSet<Skateshop.Models.TrucksProduct> TrucksProduct { get; set; }
+        public DbSet<TrucksProduct> TrucksProduct { get; set; }
 
-        public DbSet<Skateshop.Models.Brand> Brand { get; set; }
+        public DbSet<WheelsProduct> WheelsProduct { get; set; }
+
+        public DbSet<GriptapeProduct> GriptapeProduct { get; set; }
+
+        public DbSet<Brand> Brand { get; set; }
+
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
     }
 }

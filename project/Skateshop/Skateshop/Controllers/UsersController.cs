@@ -110,7 +110,7 @@ namespace Skateshop.Controllers
         // GET: Users/Details/5
         public async Task<IActionResult> Details(long? id)
         {
-            if (id == null)
+            if (id == null || !_authService.IsAdmin(HttpContext))
             {
                 return NotFound();
             }

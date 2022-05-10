@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZPG8tRi/KLbhylfkH+Y73XtlTlcmdDugjOn4mIOKDSU8qamL/NlMu0FrSieyxk6fen0WqtHmv5XKcYAuISpaCg==",
+  "dgSpecHash": "1Px8RAP9xfKhJDN4FxXPozUZx3KkRDmau6OFFRtgiSRNY5Mpz0036FSCmJ4xkE9XDqk9J4veez7dbTUcKohVkQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ronni\\Desktop\\TBZ\\326\\skateshop\\project\\Skateshop\\Skateshop\\Skateshop.csproj",
+  "projectFilePath": "D:\\Users\\ronni\\Documents\\GitHub\\skateshop\\project\\Skateshop\\Skateshop\\Skateshop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ronni\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ronni\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

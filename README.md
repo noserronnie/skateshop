@@ -1,7 +1,8 @@
 # Skateshop (TBZ M326 Projekt)
 
 ```
-This branch shouldn't be evaluated for the project in the M326. I decided to continue working on this project after the submission date.
+This branch shouldn't be evaluated for the project in the M326.
+I decided to continue working on this project after the submission date.
 ```
 
 ## Description
